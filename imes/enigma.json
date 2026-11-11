@@ -1,0 +1,9 @@
+{
+  "name": "bada enigma",
+  "description": "bada enigma: henkan mode types through an Enigma machine; every henkan session starts from the starting state, Backspace turns the rotors back. Settings: {\"rotors\": [\"I\", \"II\", \"III\"], \"reflector\": \"B\", \"rings\": \"AAA\", \"start\": \"AAA\", \"plugboard\": \"AV BS\", \"forms\": [\"upper\", \"lower\", \"groups\", \"plain\"], \"space\": \"commit\" | \"x\"}. 半角/全角 in muhenkan enciphers the selection.",
+  "root": "..",
+  "library": "target/release/libenigma.{ext}",
+  "prefix": "enigma",
+  "mode": "henkan",
+  "keyboard": "jis"
+}

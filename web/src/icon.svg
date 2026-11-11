@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>bada enigma</title>
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1273bf"/>
+      <stop offset="0.45" stop-color="#0a4f92"/>
+      <stop offset="1" stop-color="#062e62"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#3fa2e8" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#3fa2e8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="228" fill="url(#sea)"/>
+  <rect width="1024" height="1024" rx="228" fill="url(#glow)"/>
+  <!-- a rotor: a white cog with its window letter -->
+  <path d="M467.0 276.3 L474.4 214.4 L549.6 214.4 L557.0 276.3 L614.2 294.8 L656.5 249.1 L717.4 293.3 L687.0 347.7 L722.3 396.4 L783.4 384.3 L806.7 455.8 L750.1 481.9 L750.1 542.1 L806.7 568.2 L783.4 639.7 L722.3 627.6 L687.0 676.3 L717.4 730.7 L656.5 774.9 L614.2 729.2 L557.0 747.7 L549.6 809.6 L474.4 809.6 L467.0 747.7 L409.8 729.2 L367.5 774.9 L306.6 730.7 L337.0 676.3 L301.7 627.6 L240.6 639.7 L217.3 568.2 L273.9 542.1 L273.9 481.9 L217.3 455.8 L240.6 384.3 L301.7 396.4 L337.0 347.7 L306.6 293.3 L367.5 249.1 L409.8 294.8Z" fill="#ffffff"/>
+  <circle cx="512" cy="512" r="150" fill="#0a4f92"/>
+  <text x="512" y="512" dy="0.35em" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-weight="700" font-size="190" fill="#ffffff">A</text>
+</svg>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>bada enigma</title>
+<meta name="description" content="bada enigma: a joke input method. Henkan mode types through an Enigma machine. A bada-compatible engine, compiled to WebAssembly, driven through its C ABI.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><img src="icon.svg" alt="" width="28" height="28"><b>bada enigma</b></div>
+  <div class="mode" id="mode" aria-live="polite">
+    <button id="muhenkanBtn" title="英数: muhenkan mode (plain typing)">英数 <span>Muhenkan</span></button>
+    <button id="henkanBtn" title="かな: henkan mode (enciphered)">かな <span>Henkan</span></button>
+  </div>
+  <div class="spacer"></div>
+  <a class="link" href="https://bada.sjun.me">bada ime</a>
+  <a class="link" href="https://github.com/team-mirae/bada-enigma" target="_blank" rel="noopener">GitHub</a>
+  <button id="settingsBtn" class="primary">Settings</button>
+</header>
+
+<main>
+  <div id="warning" class="warning" hidden></div>
+  <div class="editor" id="editor">
+    <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+    <textarea id="text" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off"
+      placeholder="Loading the machine…" disabled aria-label="Text"></textarea>
+    <div class="menu" id="menu" hidden></div>
+  </div>
+  <div class="status" id="status"></div>
+
+  <section class="machine" id="machine" aria-label="The machine">
+    <div class="rotors">
+      <div class="ukw"><small>UKW</small><b id="ukw">B</b></div>
+      <div class="wheels" id="wheels"></div>
+    </div>
+    <div class="lamps" id="lamps" aria-label="Lampboard"></div>
+    <div class="plugs"><small>Steckerbrett</small> <span id="plugs"></span></div>
+  </section>
+  <p class="help" id="help">
+    <kbd>かな</kbd> (or tap right <kbd>⌘</kbd>) types through the machine; <kbd>英数</kbd> (left <kbd>⌘</kbd>) types plainly.
+    Every henkan session starts from the starting state; <kbd>⌫</kbd> turns the rotors back.
+    <kbd>Tab</kbd> picks another form; <kbd>Space</kbd> or <kbd>Enter</kbd> commits.
+    In muhenkan, <kbd>半角/全角</kbd> (or <kbd>`</kbd>) enciphers the selection.
+    Typing the ciphertext again, from the same starting state, gives back the plaintext.
+  </p>
+</main>
+
+<dialog id="settings" aria-label="bada enigma Settings">
+  <form method="dialog" class="dialog-head">
+    <b>bada enigma Settings</b>
+    <button class="close" aria-label="Close">×</button>
+  </form>
+  <div class="pages" id="pages"></div>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

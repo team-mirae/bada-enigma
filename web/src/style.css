@@ -1,0 +1,98 @@
+/* bada ime's web theme (team-mirae/bada-ime web/src/style.css), with the machine added. */
+:root{
+  color-scheme:light;
+  --bg:#f4f6f8;--surface:#ffffff;--border:#d5dbe1;--text:#17202a;--muted:#5d6b78;--accent:#1f6f9f;--accent-text:#fff;
+  --menu:rgba(250,250,252,.92);--sel:rgba(31,111,159,.9);--mark:#1f6f9f;--warn:#fff4d6;--warn-border:#e8c766;
+  --metal:#2a3036;--metal-edge:#14181c;--wheel:#f1ede4;--wheel-text:#1b1f23;--lamp:#3a4148;--lamp-text:#9aa4ae;--lit:#ffd36b;--lit-text:#3a2a00;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#12171c;--surface:#1a2128;--border:#2d3741;--text:#e6ebef;--muted:#9aa7b3;--accent:#6fb3dc;--accent-text:#0d1318;
+  --menu:rgba(38,44,52,.94);--sel:rgba(111,179,220,.85);--mark:#6fb3dc;--warn:#3a3015;--warn-border:#7a6420;
+  --metal:#0d1114;--metal-edge:#000;--wheel:#d9d3c5;--lamp:#20262c;--lamp-text:#6b7680;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Noto Sans KR","Noto Sans JP",sans-serif}
+button,select,input,textarea{font:inherit;color:inherit}
+button,select{font-size:.9rem;border:1px solid var(--border);background:var(--surface);padding:5px 11px;border-radius:8px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono)}
+header{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+.brand{font-size:1.1rem;display:flex;align-items:center;gap:8px}
+.brand img{display:block}
+.spacer{flex:1}
+.link{color:var(--muted);text-decoration:none;font-size:.9rem}
+.mode{display:flex;border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.mode button{border:0;border-radius:0;padding:5px 12px;background:transparent}
+.mode button span{color:var(--muted);font-size:.8rem;margin-left:4px}
+.mode button.on{background:var(--accent);color:var(--accent-text)}
+.mode button.on span{color:inherit;opacity:.8}
+main{max-width:1000px;margin:0 auto;padding:18px 16px 40px}
+.warning{background:var(--warn);border:1px solid var(--warn-border);border-radius:10px;padding:8px 12px;margin-bottom:12px;font-size:.9rem}
+
+/* The text field: a textarea over a backdrop that draws the marked text's underline. */
+.editor{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;height:200px}
+.editor:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+.editor textarea,.backdrop{position:absolute;inset:0;margin:0;padding:14px 16px;border:0;width:100%;height:100%;
+  font:20px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Noto Sans KR","Noto Sans JP",sans-serif;
+  white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;letter-spacing:normal;tab-size:4;overflow-y:auto}
+.editor textarea{background:transparent;resize:none;outline:none;z-index:1;scrollbar-gutter:stable}
+.backdrop{color:transparent;pointer-events:none;overflow:hidden;scrollbar-gutter:stable}
+.backdrop .mark{border-bottom:2px solid var(--mark)}
+.status{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;margin:8px 2px 18px;min-height:1.3em}
+.status b{color:var(--text);font-weight:600}
+
+/* The suggestion menu (bada ime's SuggestionWindow). */
+.menu{position:absolute;z-index:3;min-width:220px;background:var(--menu);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:.5px solid var(--border);border-radius:13px;box-shadow:0 8px 28px rgba(0,0,0,.22);padding:5px;font-size:15px}
+.menu .row{display:flex;gap:18px;align-items:center;height:27px;padding:0 7px;border-radius:7px;white-space:nowrap;position:relative}
+.menu .row + .row::before{content:"";position:absolute;left:7px;right:7px;top:0;border-top:.5px solid color-mix(in srgb,var(--muted) 35%,transparent)}
+.menu .row.sel::before,.menu .row.sel + .row::before{display:none}
+.menu .row .note{margin-left:auto;color:var(--muted);font-size:12px}
+.menu .row.sel{background:var(--sel);color:#fff}
+.menu .row.sel .note{color:rgba(255,255,255,.75)}
+
+/* The machine. */
+.machine{background:var(--metal);border:1px solid var(--metal-edge);border-radius:16px;padding:18px 18px 14px;color:#cfd6dc;
+  display:grid;gap:16px;justify-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);opacity:.6;transition:opacity .2s}
+body.henkan .machine{opacity:1}
+.rotors{display:flex;gap:18px;align-items:center}
+.ukw{display:grid;justify-items:center;font-family:var(--mono)}
+.ukw small,.plugs small{color:#8b959e;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.ukw b{font-size:1.2rem}
+.wheels{display:flex;gap:12px}
+.wheel{display:grid;justify-items:center;width:58px;background:linear-gradient(#9aa1a8,var(--wheel) 30%,var(--wheel) 70%,#9aa1a8);
+  border-radius:8px;padding:2px 0;color:var(--wheel-text);font-family:var(--mono);position:relative}
+.wheel .edge{font-size:.8rem;opacity:.45;line-height:1.3}
+.wheel b{font-size:1.7rem;line-height:1.2;background:var(--wheel);border-block:1px solid rgba(0,0,0,.25);width:100%;text-align:center}
+.wheel small{position:absolute;bottom:-20px;font-size:11px;color:#8b959e;white-space:nowrap}
+.lamps{display:grid;gap:8px;justify-items:center;margin-top:10px}
+.lamprow{display:flex;gap:8px}
+.lamp{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--lamp);color:var(--lamp-text);
+  font-family:var(--mono);font-weight:600;border:1px solid var(--metal-edge);transition:background .08s,color .08s,box-shadow .08s}
+.lamp.lit{background:var(--lit);color:var(--lit-text);box-shadow:0 0 18px 4px color-mix(in srgb,var(--lit) 55%,transparent)}
+.plugs{font-family:var(--mono);font-size:.85rem;text-align:center}
+.help{color:var(--muted);font-size:.85rem;text-align:center;margin-top:14px;line-height:1.9}
+.help kbd{font:inherit;border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--surface);color:var(--text)}
+@media (max-width:560px){.lamp{width:30px;height:30px}.lamprow,.lamps{gap:5px}}
+
+/* Settings. */
+dialog{border:1px solid var(--border);border-radius:14px;padding:0;width:min(640px,96vw);max-height:88vh;background:var(--surface);color:var(--text);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(0,0,0,.3)}
+.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);margin:0}
+.dialog-head .close{border:0;font-size:1.4rem;line-height:1;padding:0 6px;background:transparent}
+.pages{overflow-y:auto;padding:16px 22px 24px}
+.page{display:grid;gap:10px;align-content:start}
+.page h3{margin:12px 0 0;font-size:1rem}
+.page h3:first-child{margin-top:0}
+.page .hint{color:var(--muted);font-size:.82rem;margin:-4px 0 0}
+.page .label{min-width:170px;color:var(--muted);font-size:.9rem}
+.page label.check{display:flex;gap:8px;align-items:flex-start}
+.page label.check input{margin-top:4px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cands{display:grid;gap:4px}
+input[type=text]{border:1px solid var(--border);background:var(--bg);border-radius:7px;padding:4px 8px}
+input.wide{width:100%}
