@@ -2,3 +2,4 @@
 /web/dist
 .vercel
 .DS_Store
+.env*
